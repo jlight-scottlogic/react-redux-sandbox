@@ -1,0 +1,1 @@
+export const pipe = (...funcs) => funcs.reduce((fn1, fn2) => (arg) => fn2(fn1(arg)));

@@ -9,7 +9,7 @@ export default class SpinnerComponent extends React.Component {
         }
 
         return (
-            <div class="d-flex justify-content-center">
+            <div className="d-flex justify-content-center">
                 <Spinner animation="border" variant="primary" />
             </div>
         )

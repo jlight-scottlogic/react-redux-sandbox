@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Routes from './routes';
-import Navbar from './navbar';
+import Navbar from './components/navbar/navbar';
 import products from './data/products';
 import categories from './data/categories';
 import { store, history } from './redux/store';

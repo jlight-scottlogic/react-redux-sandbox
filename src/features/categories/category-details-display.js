@@ -1,8 +1,6 @@
 import React from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-import productRoutes from '../products/routes/routes';
-import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -11,8 +9,6 @@ class CategoryDisplayComponent extends React.Component {
     render() {
         return (
             <div>
-                <Button as={Link} variant="primary mb-2 float-right" to={productRoutes.add(this.props.id)}>Add product</Button>
-                <div className="clearfix"></div>
                 {
                     this.props.products && this.props.products.map(prod =>
                         <Alert key={prod.id} variant="dark">

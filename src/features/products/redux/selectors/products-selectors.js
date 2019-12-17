@@ -11,3 +11,8 @@ export const selectProductsListItems = pipe(
     selectProductsList,
     list => list.items
 );
+
+export const selectProductsListIsLoading = pipe(
+    selectProductsList,
+    list => list.isLoading
+);

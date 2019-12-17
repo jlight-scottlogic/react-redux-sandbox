@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { loadCategory } from './redux/actions/categories-action-creators';
 import Display from './category-details-display';
 import { loadProductsForCategory } from '../products/redux/actions/products-action-creators';
-import { selectProductsListItems } from '../products/redux/selectors/products-selectors';
+import { selectProductsListItems, selectProductsListIsLoading } from '../products/redux/selectors/products-selectors';
+import productRoutes from '../products/routes/routes';
+import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button';
+import Spinner from '../../components/spinner/spinner';
 
 class CategoryComponent extends React.Component {
 
@@ -14,14 +18,20 @@ class CategoryComponent extends React.Component {
 
     render() {
         return (
-            <Display {...this.props}></Display>
+            <div>
+                <Button as={Link} variant="primary mb-2 float-right" to={productRoutes.add(this.props.id)}>Add product</Button>
+                <div className="clearfix"></div>
+                <Spinner isLoading={this.props.isLoading} />
+                <Display {...this.props}></Display>
+            </div>
         )
     }
 }
 
 const mapStateToProps = (state, ownProps) => ({
     id: ownProps.match.params.categoryId,
-    products: selectProductsListItems(state)
+    products: selectProductsListItems(state),
+    isLoading: selectProductsListIsLoading(state)
 });
 
 const mapDispatchToProps = {

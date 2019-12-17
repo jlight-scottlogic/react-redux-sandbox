@@ -10,7 +10,7 @@ describe('categories reducer', () => {
         })
     })
 
-    describe('LOAD_CATEGORIES', () => {
+    describe(actions.loadCategoriesAction.type, () => {
         it('should set loading to true', () => {
             expect(
                 sut({
@@ -25,7 +25,7 @@ describe('categories reducer', () => {
         })
     })
 
-    describe('LOAD_CATEGORIES_SUCCESS', () => {
+    describe(actions.loadCategoriesSuccessAction.type, () => {
         it('should set loading to false and set list', () => {
             expect(
                 sut({
@@ -40,7 +40,7 @@ describe('categories reducer', () => {
         })
     })
 
-    describe('LOAD_CATEGORIES', () => {
+    describe(actions.loadCategoryAction.type, () => {
         it('should set loading flag to true', () => {
             expect(
                 sut({
@@ -55,7 +55,7 @@ describe('categories reducer', () => {
         })
     })
 
-    describe('LOAD_CATEGORY_SUCCESS', () => {
+    describe(actions.loadCategorySuccessAction.type, () => {
         it('should update single from empty', () => {
             expect(
                 sut({
@@ -122,7 +122,7 @@ describe('categories reducer', () => {
         })
     })
 
-    describe('EDIT_CATEGORY_SUCCESS', () => {
+    describe(actions.editCategorySuccessAction.type, () => {
         it('should update single from empty', () => {
             expect(
                 sut({

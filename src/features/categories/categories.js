@@ -3,7 +3,8 @@ import CategoryList from './categories-list';
 import { connect } from 'react-redux';
 import { loadCategories } from './redux/actions/categories-action-creators';
 import Container from 'react-bootstrap/Container';
-import { selectCategoriesListItems } from './redux/selectors/categories-selectors';
+import { selectCategoriesListItems, selectCategoriesListIsLoading } from './redux/selectors/categories-selectors';
+import Spinner from '../../components/spinner/spinner';
 
 class CategoriesComponent extends React.Component {
 
@@ -12,16 +13,22 @@ class CategoriesComponent extends React.Component {
     }
 
     render() {
+        const list = this.props.isLoading
+            ? null :
+            (<CategoryList list={this.props.categories}></CategoryList>)
+
         return (
-            <Container>
-                <CategoryList list={this.props.categories}></CategoryList>
+            <Container className="mt-2">
+                <Spinner isLoading={this.props.isLoading} />
+                {list}
             </Container>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    categories: selectCategoriesListItems(state)
+    categories: selectCategoriesListItems(state),
+    isLoading: selectCategoriesListIsLoading(state)
 })
 
 export default connect(

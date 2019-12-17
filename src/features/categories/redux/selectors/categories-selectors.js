@@ -16,3 +16,8 @@ export const selectCategoryWithId = (id) => pipe(
     selectCategoriesListItems,
     items => items.find(x => x.id === parseInt(id)) || null
 );
+
+export const selectCategoriesListIsLoading = pipe(
+    selectCategoriesList,
+    list => list.isLoading
+);

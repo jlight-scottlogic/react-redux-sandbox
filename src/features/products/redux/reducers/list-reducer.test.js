@@ -41,7 +41,7 @@ describe('products reducer', () => {
     })
 
     describe(actions.loadProductsAction.type, () => {
-        it('should set loading flag only', () => {
+        it('should set loading flag and clear list', () => {
             expect(
                 sut({
                     isLoading: false,
@@ -50,7 +50,7 @@ describe('products reducer', () => {
                     actions.loadProductsAction.create())
             ).toEqual({
                 isLoading: true,
-                items: [{ a: 1 }]
+                items: []
             })
         })
     })

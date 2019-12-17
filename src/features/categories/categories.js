@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoryList from './categories-list';
 import { connect } from 'react-redux';
-import { loadCategories } from './redux/actions';
+import { loadCategories } from './redux/actions/categories-action-creators';
 import Container from 'react-bootstrap/Container';
 import { selectCategoriesListItems } from './redux/selectors/categories-selectors';
 

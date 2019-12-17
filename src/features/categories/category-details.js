@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadCategory } from './redux/actions';
+import { loadCategory } from './redux/actions/categories-action-creators';
 import Display from './category-details-display';
-import { loadProductsForCategory } from '../products/redux/actions';
+import { loadProductsForCategory } from '../products/redux/actions/products-action-creators';
 import { selectProductsListItems } from '../products/redux/selectors/products-selectors';
 
 class CategoryComponent extends React.Component {

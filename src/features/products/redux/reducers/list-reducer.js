@@ -1,4 +1,4 @@
-import { loadProductsAction, loadProductsSuccessAction } from "../actions";
+import * as actions from "../actions/products-actions";
 
 const initialState = {
     items: [],
@@ -7,7 +7,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
 
-    if (loadProductsAction.matches(action)) {
+    if (actions.loadProductsAction.matches(action)) {
         return {
             ...state,
             items: [],
@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => {
         };
     }
 
-    if (loadProductsSuccessAction.matches(action)) {
+    if (actions.loadProductsSuccessAction.matches(action)) {
         return {
             ...state,
             items: action.payload,

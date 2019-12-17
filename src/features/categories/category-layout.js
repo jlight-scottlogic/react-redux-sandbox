@@ -3,7 +3,7 @@ import CategoryRoutes from './routes/category';
 import Navbar from './category-navbar';
 import { connect } from 'react-redux';
 import { selectCategoryWithId } from './redux/selectors/categories-selectors';
-import { loadCategory } from './redux/actions';
+import { loadCategory } from './redux/actions/categories-action-creators';
 
 class CategoryLayoutComponent extends React.Component {
 

@@ -1,5 +1,5 @@
 import sut from './list-reducer';
-import * as actions from '../actions';
+import * as actions from '../actions/categories-actions';
 
 describe('categories reducer', () => {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from './category-edit-form';
-import { loadCategory, editCategory } from './redux/actions';
+import { loadCategory, editCategory } from './redux/actions/categories-action-creators';
 import { selectCategoryWithId } from './redux/selectors/categories-selectors';
 import { connect } from 'react-redux';
 

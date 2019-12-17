@@ -1,32 +1,38 @@
 import React from 'react';
 import Form from './product-create-form';
-import { post } from '../../client/fake-client';
-import routes from '../categories/routes/routes'
+import { connect } from 'react-redux';
+import { createProduct } from './redux/actions/products-action-creators';
 
-export default class ProductCreateComponent extends React.Component {
-
-    state = {
-        categoryId: this.props.match.params.categoryId
-    }
+class ProductCreateComponent extends React.Component {
 
     handleSave(product, e) {
         e.preventDefault();
-
-        product.categoryId = parseInt(this.state.categoryId);
-        console.log(product);
-
-        post('products', product).then(() => { this.props.history.push(routes.details(this.state.categoryId)) });
+        product.categoryId = parseInt(this.props.categoryId);
+        this.props.createProduct(product);
     }
 
     render() {
 
-        if (this.state.categoryId == null) {
+        if (this.props.categoryId == null) {
             return null;
         }
 
         return (
-            <Form categoryId={this.state.categoryId} onSave={(product, e) => this.handleSave(product, e)}></Form>
+            <Form categoryId={this.props.categoryId} onSave={(product, e) => this.handleSave(product, e)}></Form>
         )
     }
 
 }
+
+const mapStateToProps = (_, { match: { params } }) => ({
+    categoryId: params.categoryId
+})
+
+const mapDispatchToProps = {
+    createProduct
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ProductCreateComponent);

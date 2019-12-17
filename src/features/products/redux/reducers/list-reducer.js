@@ -7,10 +7,29 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
 
+    if (actions.loadProductsAction.matches(action) ||
+        actions.createProductAction.matches(action)
+    ) {
+        return {
+            ...state,
+            isLoading: true
+        };
+    }
+
+    if (actions.createProductSuccessAction.matches(action)) {
+        return {
+            ...state,
+            items: [
+                ...state.items,
+                action.payload
+            ],
+            isLoading: false
+        };
+    }
+
     if (actions.loadProductsAction.matches(action)) {
         return {
             ...state,
-            items: [],
             isLoading: true
         };
     }

@@ -1,15 +1,8 @@
-export class ReduxAction {
-
-    type = 'UNDEFINED';
-
-    constructor(type) {
-        this.type = type;
-    }
-
-    matches = (action) => this.type === action.type;
-
-    create = (payload) => ({
-        type: this.type,
+export const createReduxAction = (type) => ({
+    type,
+    matches: (action) => type === action.type,
+    create: (payload) => ({
+        type: type,
         payload: payload
-    });
-}
+    })
+})

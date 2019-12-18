@@ -1,7 +1,7 @@
-import { ReduxAction } from "../../../../redux/redux-action";
+import { createReduxAction } from "../../../../redux/redux-action";
 
-export const loadProductsAction = new ReduxAction('LOAD_PRODUCTS');
-export const loadProductsSuccessAction = new ReduxAction('LOAD_PRODUCTS_SUCCESS');
+export const loadProductsAction = createReduxAction('LOAD_PRODUCTS');
+export const loadProductsSuccessAction = createReduxAction('LOAD_PRODUCTS_SUCCESS');
 
-export const createProductAction = new ReduxAction('CREATE_PRODUCT');
-export const createProductSuccessAction = new ReduxAction('CREATE_PRODUCT_SUCCESS');
+export const createProductAction = createReduxAction('CREATE_PRODUCT');
+export const createProductSuccessAction = createReduxAction('CREATE_PRODUCT_SUCCESS');

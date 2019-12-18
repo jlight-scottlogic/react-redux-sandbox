@@ -10,8 +10,7 @@ class CategoryEditComponent extends React.Component {
         this.props.loadCategory(this.props.match.params.categoryId);
     }
 
-    handleSave(category, e) {
-        e.preventDefault();
+    handleSave(category) {
         this.props.editCategory(category);
     }
 

@@ -1,17 +1,26 @@
-export default (obj, rules, display) => Object.keys(obj).reduce((form, key) => {
+export default (obj) => (options = {}) => Object.keys(obj).reduce((form, key) => {
+
+    const optionsForKey = options[key] || {};
+
     return obj == null ? {} : {
         ...form,
-        [key]: {
-            id: key,
-            displayName: display != null ? display[key] || convertToDisplayName(key) : convertToDisplayName(key),
-            value: obj[key],
-            rules: rules != null ? rules[key] || [] : [],
-            errors: [],
-            valid: false,
-            touched: false
+        controls: {
+            ...form.controls,
+            [key]: {
+                id: key,
+                displayName: optionsForKey.displayName || convertToDisplayName(key),
+                value: obj[key],
+                rules: optionsForKey.rules || [],
+                errors: [],
+                isValid: false,
+                isTouched: false
+            }
         }
     }
-}, {});
+}, {
+    isSubmitted: false,
+    isValid: false
+});
 
 const convertToDisplayName = (str) => camelPad(str);
 

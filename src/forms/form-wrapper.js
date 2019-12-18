@@ -2,39 +2,46 @@ import React from 'react';
 
 export default (formCreator) => (WrappedComponent) => {
 
-    const getValueFromForm = (form) => Object.keys(form).reduce((values, key) => ({
+    const getValueFromForm = (form) => Object.keys(form.controls).reduce((values, key) => ({
         ...values,
-        [key]: form[key].value
+        [key]: form.controls[key].value
     }), {});
 
-    const validate = (form) => Object.keys(form).reduce(
+    const validate = (form) => Object.keys(form.controls).reduce(
         (newForm, fieldKey) => {
-            const field = newForm[fieldKey];
-            const errors = validateField(field, newForm).filter(x => !x.valid)
+            const field = newForm.controls[fieldKey];
+            const errors = validateField(field, newForm).filter(x => !x.isValid)
 
             return {
                 ...newForm,
-                [fieldKey]: {
-                    ...field,
-                    valid: errors.length === 0,
-                    errors: errors.map(result => result.message.replace('{field}', field.displayName || field.id))
-                }
+                controls: {
+                    ...newForm.controls,
+                    [fieldKey]: {
+                        ...field,
+                        isValid: errors.length === 0,
+                        errors: errors.map(result => result.message.replace('{field}', field.displayName || field.id))
+                    }
+                },
+                isValid: newForm.isValid && errors.length === 0
             }
         },
-        form);
+        { ...form, isValid: true });
 
     const validateField = (field, form) => field.rules.map(rule => rule(field.value, getValueFromForm(form)));
 
     const updatedFormValue = (e, form) => validate({
         ...form,
-        [e.target.id]: {
-            ...form[e.target.id],
-            value: e.target.value,
-            touched: true
+        controls: {
+            ...form.controls,
+            [e.target.id]: {
+                ...form.controls[e.target.id],
+                value: e.target.value,
+                isTouched: true
+            }
         }
     });
 
-    return class Container extends React.Component {
+    return class FormContainer extends React.Component {
 
         constructor(props) {
             super(props);
@@ -42,15 +49,33 @@ export default (formCreator) => (WrappedComponent) => {
             this.state = validate(formCreator(this.props));
 
             this.handleChange = this.handleChange.bind(this);
+            this.submitForm = this.submitForm.bind(this);
         }
 
         handleChange(e) {
             this.setState(updatedFormValue(e, this.state));
         }
 
+        submitForm(e) {
+            e.preventDefault();
+
+            this.setState({
+                ...this.state,
+                isSubmitted: true
+            });
+
+            if (this.state.isValid) {
+                this.props.onSave(getValueFromForm(this.state), e);
+            }
+        }
+
         render() {
             return (
-                <WrappedComponent {...this.props} form={this.state} updateValue={this.handleChange} getFormValue={getValueFromForm}></WrappedComponent>
+                <WrappedComponent {...this.props}
+                    form={this.state}
+                    updateValue={this.handleChange}
+                    submitForm={this.submitForm}
+                ></WrappedComponent>
             )
         }
     }

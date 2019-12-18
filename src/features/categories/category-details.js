@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { loadCategory } from './redux/actions/categories-action-creators';
-import Display from './category-details-display';
+import ProductList from '../products/products-list';
 import { loadProductsForCategory } from '../products/redux/actions/products-action-creators';
 import { selectProductsListItems, selectProductsListIsLoading } from '../products/redux/selectors/products-selectors';
 import productRoutes from '../products/routes/routes';
@@ -22,7 +22,7 @@ class CategoryComponent extends React.Component {
                 <Button as={Link} variant="primary" to={productRoutes.add(this.props.id)} className="mb-2 float-right">Add product</Button>
                 <div className="clearfix"></div>
                 <Spinner isLoading={this.props.isLoading} />
-                <Display {...this.props}></Display>
+                <ProductList {...this.props}></ProductList>
             </div>
         )
     }

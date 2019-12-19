@@ -1,4 +1,4 @@
-import _createFormObject from './create-form';
+import { createFormObject as _createFormObject } from './functions';
 import _connectForm from './form-wrapper';
 
 export const createFormObject = _createFormObject;

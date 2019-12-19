@@ -1,6 +1,6 @@
 import React from 'react';
-import { validate, getValueFromForm } from './validation';
-import { submit, bindChangeHandlers } from './functions';
+import { validate } from './validation';
+import { getValueFromForm, submit, bindChangeHandlers } from './functions';
 
 export default (formCreator) => (WrappedComponent) => {
 

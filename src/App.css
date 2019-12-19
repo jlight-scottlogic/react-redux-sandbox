@@ -54,3 +54,10 @@
     right: 0;
     text-align: center;
 }
+
+.mini-alert-container {
+    position: absolute;
+    top: 116px;
+    left: 50%;
+    transform: translateX(-50%);
+}

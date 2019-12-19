@@ -15,7 +15,6 @@ class CategoryEditComponent extends React.Component {
     }
 
     render() {
-
         if (this.props.category == null) {
             return null;
         }

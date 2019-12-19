@@ -12,7 +12,7 @@ export default (formCreator) => (WrappedComponent) => {
             this.handleChange = this.handleChange.bind(this);
             this.submitForm = this.submitForm.bind(this);
 
-            this.state = bindChangeHandlers(formCreator(this.props), this.handleChange);
+            this.state = bindChangeHandlers(validate(formCreator(this.props)), this.handleChange);
         }
 
         handleChange(e) {

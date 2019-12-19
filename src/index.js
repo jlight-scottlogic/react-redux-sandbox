@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import AppErrorBoundary from './components/errors/basic-error-boundary';
 
 ReactDOM.render(
-  <App />,
+  <AppErrorBoundary>
+    <App />
+  </AppErrorBoundary>
+  ,
   document.getElementById('root')
 );
 

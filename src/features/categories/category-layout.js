@@ -4,6 +4,7 @@ import Navbar from './category-navbar';
 import { connect } from 'react-redux';
 import { selectCategoryWithId } from './redux/selectors/categories-selectors';
 import { loadCategory } from './redux/actions/categories-action-creators';
+import ErrorBoundary from '../../components/errors/basic-error-boundary'
 
 class CategoryLayoutComponent extends React.Component {
 
@@ -19,9 +20,11 @@ class CategoryLayoutComponent extends React.Component {
         return (
             <div>
                 <Navbar category={this.props.category}></Navbar>
-                <div className="container mt-2">
-                    <CategoryRoutes category={this.props.category}></CategoryRoutes>
-                </div>
+                <ErrorBoundary>
+                    <div className="container mt-2">
+                        <CategoryRoutes category={this.props.category}></CategoryRoutes>
+                    </div>
+                </ErrorBoundary>
             </div>
         )
     }

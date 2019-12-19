@@ -5,8 +5,9 @@ import Navbar from './components/navbar/navbar';
 import products from './data/products';
 import categories from './data/categories';
 import { store, history } from './redux/store';
-import { Provider  } from 'react-redux';
+import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import MiniAlert from './components/alert/mini-alert';
 
 class App extends React.Component {
 
@@ -30,6 +31,8 @@ class App extends React.Component {
           <Navbar></Navbar>
           <Routes></Routes>
         </ConnectedRouter>
+
+        <MiniAlert />
       </Provider>
     );
   }

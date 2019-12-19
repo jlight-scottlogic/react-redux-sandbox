@@ -7,7 +7,6 @@ class ProductCreateComponent extends React.Component {
 
     handleSave(product, e) {
         e.preventDefault();
-        product.categoryId = parseInt(this.props.categoryId);
         this.props.createProduct(product);
     }
 

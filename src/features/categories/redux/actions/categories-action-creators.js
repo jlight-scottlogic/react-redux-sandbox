@@ -20,11 +20,17 @@ export const loadCategories = () => async (dispatch) => {
     return dispatch(actions.loadCategoriesSuccessAction.create(list));
 }
 
-export const editCategory = (category) => (dispatch) => {
+export const editCategory = (category) => async (dispatch) => {
     dispatch(actions.editCategoryAction.create());
 
-    return put(`categories/${category.id}`, category)
-        .then(() => dispatch(actions.editCategorySuccessAction.create(category)).then(() => dispatch(showSuccessAlert('Category has been edited'))))
-        .then(() => dispatch(push(routes.details(category.id))))        
-        .catch(() => dispatch(showErrorAlert('Something went wrong!')))
+    try {
+        await put(`categories/${category.id}`, category);
+
+        dispatch(actions.editCategorySuccessAction.create(category));
+        dispatch(push(routes.details(category.id)));
+        return dispatch(showSuccessAlert('Category has been edited'));
+    }
+    catch (e) {
+        return dispatch(showErrorAlert('Something went wrong!'));
+    }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { validate, getValueFromForm } from './validation';
+import { bindChangeHandlers, validate, getValueFromForm, submit } from './validation';
 
 export default (formCreator) => (WrappedComponent) => {
 
@@ -7,11 +7,11 @@ export default (formCreator) => (WrappedComponent) => {
 
         constructor(props) {
             super(props);
-
-            this.state = validate(formCreator(this.props));
-
+            
             this.handleChange = this.handleChange.bind(this);
             this.submitForm = this.submitForm.bind(this);
+
+            this.state = bindChangeHandlers(formCreator(this.props), this.handleChange);
         }
 
         handleChange(e) {
@@ -31,10 +31,7 @@ export default (formCreator) => (WrappedComponent) => {
         submitForm(e) {
             e.preventDefault();
 
-            this.setState({
-                ...this.state,
-                isSubmitted: true
-            });
+            this.setState(submit(this.state));
 
             if (this.state.isValid) {
                 this.props.onSave(getValueFromForm(this.state), e);
@@ -45,7 +42,6 @@ export default (formCreator) => (WrappedComponent) => {
             return (
                 <WrappedComponent {...this.props}
                     form={this.state}
-                    updateValue={this.handleChange}
                     submitForm={this.submitForm}
                 ></WrappedComponent>
             )

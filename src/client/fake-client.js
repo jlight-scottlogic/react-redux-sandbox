@@ -53,4 +53,4 @@ export const get = async (url) => {
     return {};
 }
 
-const getSetFromStorage = (key) => JSON.parse(localStorage.getItem(key));
+const getSetFromStorage = (key) => JSON.parse(localStorage.getItem(key)) || [];

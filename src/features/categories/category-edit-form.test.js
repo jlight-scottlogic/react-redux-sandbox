@@ -22,7 +22,8 @@ describe('CategoryEditForm', () => {
         const props = {
             category: {
                 name: 'Name',
-                description: 'Description'
+                description: 'Description',
+                colour: ''
             },
             onSave: jest.fn()
         };
@@ -51,7 +52,8 @@ describe('CategoryEditForm', () => {
             const props = {
                 category: {
                     name: '',
-                    description: 'Description'
+                    description: 'Description',
+                    colour: ''
                 },
                 onSave: jest.fn()
             };
@@ -77,7 +79,8 @@ describe('CategoryEditForm', () => {
             const props = {
                 category: {
                     name: 'Name',
-                    description: ''
+                    description: '',
+                    colour: ''
                 },
                 onSave: jest.fn()
             };

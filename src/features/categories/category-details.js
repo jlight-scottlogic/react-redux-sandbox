@@ -19,7 +19,7 @@ class CategoryComponent extends React.Component {
     render() {
         return (
             <div>
-                <Button as={Link} variant="primary" to={productRoutes.add(this.props.id)} className="mb-2 float-right">Add product</Button>
+                <Button as={Link} variant="primary" to={productRoutes.create(this.props.id)} className="mb-2 float-right">Add product</Button>
                 <div className="clearfix"></div>
                 <Spinner isLoading={this.props.isLoading} />
                 <ProductList {...this.props}></ProductList>

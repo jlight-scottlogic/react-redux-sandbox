@@ -122,6 +122,21 @@ describe('categories reducer', () => {
         })
     })
 
+    describe(actions.editCategoryAction.type, () => {
+        it('should set loading flag to true', () => {
+            expect(
+                sut({
+                    isLoading: false,
+                    items: [{ a: 1 }]
+                },
+                    actions.editCategoryAction.create())
+            ).toEqual({
+                isLoading: true,
+                items: [{ a: 1 }]
+            })
+        })
+    })
+
     describe(actions.editCategorySuccessAction.type, () => {
         it('should update single from empty', () => {
             expect(
@@ -185,6 +200,36 @@ describe('categories reducer', () => {
             ).toEqual({
                 isLoading: false,
                 items: [{ id: 1, name: 'Test 1' }, { id: 2, name: 'Test 2' }, { id: 3, name: 'Test 3 New' }]
+            })
+        })
+    })
+
+    describe(actions.createCategoryAction.type, () => {
+        it('should set loading flag to true', () => {
+            expect(
+                sut({
+                    isLoading: false,
+                    items: [{ a: 1 }]
+                },
+                    actions.createCategoryAction.create())
+            ).toEqual({
+                isLoading: true,
+                items: [{ a: 1 }]
+            })
+        })
+    })
+
+    describe(actions.createCategorySuccessAction.type, () => {
+        it('should add category to list and reset loading flag', () => {
+            expect(
+                sut({
+                    isLoading: true,
+                    items: []
+                },
+                    actions.createCategorySuccessAction.create({ id: 1 }))
+            ).toEqual({
+                isLoading: false,
+                items: [{ id: 1 }]
             })
         })
     })

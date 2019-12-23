@@ -8,3 +8,6 @@ export const loadCategoriesSuccessAction = createReduxAction('LOAD_CATEGORIES_SU
 
 export const editCategoryAction = createReduxAction('EDIT_CATEGORY');
 export const editCategorySuccessAction = createReduxAction('EDIT_CATEGORY_SUCCESS');
+
+export const createCategoryAction = createReduxAction('CREATE_CATEGORY');
+export const createCategorySuccessAction = createReduxAction('CREATE_CATEGORY_SUCCESS');

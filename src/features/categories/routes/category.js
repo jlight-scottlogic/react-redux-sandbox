@@ -12,7 +12,7 @@ export default class CategoryRoutesComponent extends React.Component {
             <Switch>
                 <Route exact path={categoryRoutes.details(":categoryId(\\d+)")} component={Category}></Route>
                 <Route path={categoryRoutes.edit(":categoryId(\\d+)")} component={EditCategory}></Route>
-                <Route path={productRoutes.add(":categoryId(\\d+)")} component={CreateProduct}></Route>
+                <Route path={productRoutes.create(":categoryId(\\d+)")} component={CreateProduct}></Route>
             </Switch>
         )
     }

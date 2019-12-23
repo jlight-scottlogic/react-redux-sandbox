@@ -7,16 +7,27 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
 
-    if (actions.loadCategoryAction.matches(action)) {
+    if (actions.loadCategoryAction.matches(action) ||
+        actions.editCategoryAction.matches(action) ||
+        actions.createCategoryAction.matches(action)
+    ) {
         return {
             ...state,
             isLoading: true
         };
     }
 
+    if (actions.createCategorySuccessAction.matches(action)) {
+        return {
+            ...state,
+            items: state.items.concat(action.payload),
+            isLoading: false
+        }
+    }
+
     if (actions.editCategorySuccessAction.matches(action) ||
         actions.loadCategorySuccessAction.matches(action)
-        ) {
+    ) {
 
         const items = state.items;
 

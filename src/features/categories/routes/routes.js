@@ -2,7 +2,7 @@ const layoutLink = (id) => `/categories/${id}`;
 
 export default {
     list: "/categories",
-    add: "/categories/add",
+    create: "/categories/create",
     categoryLayout: layoutLink,
     details: (id) => `${layoutLink(id)}/details`,
     edit: (id) => `${layoutLink(id)}/edit`,

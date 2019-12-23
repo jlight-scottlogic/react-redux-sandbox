@@ -1,4 +1,4 @@
-import { get, put } from "../../../../client/fake-client";
+import { get, put, post } from "../../../../client/fake-client";
 import { push } from 'connected-react-router';
 import routes from '../../routes/routes';
 import * as actions from './categories-actions';
@@ -29,6 +29,21 @@ export const editCategory = (category) => async (dispatch) => {
         dispatch(actions.editCategorySuccessAction.create(category));
         dispatch(push(routes.details(category.id)));
         return dispatch(showSuccessAlert('Category has been edited'));
+    }
+    catch (e) {
+        return dispatch(showErrorAlert('Something went wrong!'));
+    }
+}
+
+export const createCategory = (category) => async (dispatch) => {
+    dispatch(actions.createCategoryAction.create());
+
+    try {
+        await post(`categories/${category.id}`, category);
+
+        dispatch(actions.createCategorySuccessAction.create(category));
+        dispatch(push(routes.details(category.id)));
+        return dispatch(showSuccessAlert('Category has been created'));
     }
     catch (e) {
         return dispatch(showErrorAlert('Something went wrong!'));

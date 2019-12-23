@@ -15,7 +15,7 @@ export default class CategoriesListComponent extends React.Component {
                         ))
                     }
                 </div>
-                <Button as={Link} variant="primary" to={routes.create} className="mb-2 float-right">Add product</Button>
+                <Button as={Link} variant="primary" to={routes.create} className="mb-2 float-right">Add category</Button>
             </div>
         )
     }

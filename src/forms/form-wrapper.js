@@ -15,14 +15,14 @@ export default (formCreator) => (WrappedComponent) => {
             this.state = bindChangeHandlers(validate(formCreator(this.props)), this.handleChange);
         }
 
-        handleChange(e) {
+        handleChange(id, value) {
             this.setState(validate({
                 ...this.state,
                 controls: {
                     ...this.state.controls,
-                    [e.target.id]: {
-                        ...this.state.controls[e.target.id],
-                        value: e.target.value,
+                    [id]: {
+                        ...this.state.controls[id],
+                        value: value,
                         isTouched: true
                     }
                 }

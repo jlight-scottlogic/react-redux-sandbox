@@ -10,7 +10,7 @@ export default ({ control }) => (
         <Col>
             <Form.Control
                 value={control.value}
-                onChange={control.update}
+                onChange={e => control.update(e.target.id, e.target.value)}
                 isValid={control.isSubmitted && control.isValid}
                 isInvalid={control.isSubmitted && !control.isValid} />
             {

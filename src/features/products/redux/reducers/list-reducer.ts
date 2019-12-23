@@ -1,11 +1,13 @@
 import * as actions from "../actions/products-actions";
+import { AnyAction } from "redux";
+import { ProductsListState } from "../types/products-types";
 
-const initialState = {
+const initialState: ProductsListState = {
     items: [],
     isLoading: false
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state: ProductsListState = initialState, action: AnyAction): ProductsListState => {
 
     if (actions.createProductAction.matches(action)) {
         return {

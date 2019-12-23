@@ -3,8 +3,9 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Product } from './redux/types/products-types';
 
-export default class ProductsListItemComponent extends React.Component {
+export default class ProductsListItemComponent extends React.Component<{ product: Product }> {
     render() {
         return (
             <Alert variant="dark">

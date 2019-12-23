@@ -13,7 +13,7 @@ class CategoryComponent extends React.Component {
 
     componentDidMount() {
         this.props.loadCategory(this.props.match.params.categoryId);
-        this.props.loadProductsForCategory(this.props.match.params.categoryId);
+        this.props.loadProductsForCategory({ categoryId: this.props.match.params.categoryId });
     }
 
     render() {

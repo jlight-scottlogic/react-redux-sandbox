@@ -5,18 +5,23 @@ import { connectForm, createFormObject } from '../../forms';
 import { required } from '../../forms/validation';
 import { TextBox } from '../../forms/components';
 
-const ProductCreateFormComponent = ({ form, submitForm }) => (
-    <Form>        
-        <TextBox control={form.controls.name} />
-        <TextBox control={form.controls.description} />
+interface Props {
+    form: any
+    submitForm: any
+}
 
-        <Button variant="primary" type="submit" className="mt-2 float-right" onClick={submitForm}>
+const ProductCreateFormComponent = (props: Props) => (
+    <Form>
+        <TextBox control={props.form.controls.name} />
+        <TextBox control={props.form.controls.description} />
+
+        <Button variant="primary" type="submit" className="mt-2 float-right" onClick={props.submitForm}>
             Save product
         </Button>
     </Form>
 )
 
-export default connectForm(props =>
+export default connectForm((props: { categoryId: any; }) =>
     createFormObject({
         name: '',
         description: '',

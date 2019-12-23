@@ -1,10 +1,12 @@
 import sut from './list-reducer';
 import * as actions from '../actions/products-actions';
 
+const createProductWithId = (id: number) => ({ id, categoryId: 1, name: '', description: '' })
+
 describe('products reducer', () => {
 
     it('should return the initial state', () => {
-        expect(sut(undefined, {})).toEqual({
+        expect(sut(undefined, { type: '' })).toEqual({
             items: [],
             isLoading: false
         })
@@ -15,12 +17,12 @@ describe('products reducer', () => {
             expect(
                 sut({
                     isLoading: false,
-                    items: [{ a: 1 }]
+                    items: [createProductWithId(1)]
                 },
-                    actions.createProductAction.create({}))
+                    actions.createProductAction.create(createProductWithId(2)))
             ).toEqual({
                 isLoading: true,
-                items: [{ a: 1 }]
+                items: [createProductWithId(1)]
             })
         })
     })
@@ -32,10 +34,10 @@ describe('products reducer', () => {
                     isLoading: true,
                     items: []
                 },
-                    actions.createProductSuccessAction.create({ id: 1 }))
+                    actions.createProductSuccessAction.create(createProductWithId(1)))
             ).toEqual({
                 isLoading: false,
-                items: [{ id: 1 }]
+                items: [createProductWithId(1)]
             })
         })
     })
@@ -45,9 +47,9 @@ describe('products reducer', () => {
             expect(
                 sut({
                     isLoading: false,
-                    items: [{ a: 1 }]
+                    items: [createProductWithId(1)]
                 },
-                    actions.loadProductsAction.create())
+                    actions.loadProductsAction.create({ categoryId: 1 }))
             ).toEqual({
                 isLoading: true,
                 items: []
@@ -62,10 +64,10 @@ describe('products reducer', () => {
                     isLoading: true,
                     items: []
                 },
-                    actions.loadProductsSuccessAction.create([{ id: 1 }]))
+                    actions.loadProductsSuccessAction.create([createProductWithId(1)]))
             ).toEqual({
                 isLoading: false,
-                items: [{ id: 1 }]
+                items: [createProductWithId(1)]
             })
         })
     });

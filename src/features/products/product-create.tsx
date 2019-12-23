@@ -2,10 +2,11 @@ import React from 'react';
 import Form from './product-create-form';
 import { connect } from 'react-redux';
 import { createProductAction } from './redux/actions/products-actions';
+import { Product } from './redux/types/products-types';
 
-class ProductCreateComponent extends React.Component {
+class ProductCreateComponent extends React.Component<{ createProduct: (p: Product) => void, categoryId: number }> {
 
-    handleSave(product, e) {
+    handleSave(product: Product, e: Event) {
         e.preventDefault();
         this.props.createProduct(product);
     }
@@ -17,13 +18,13 @@ class ProductCreateComponent extends React.Component {
         }
 
         return (
-            <Form categoryId={this.props.categoryId} onSave={(product, e) => this.handleSave(product, e)}></Form>
+            <Form categoryId={this.props.categoryId} onSave={(product: Product, e: Event) => this.handleSave(product, e)}></Form>
         )
     }
 
 }
 
-const mapStateToProps = (_, { match: { params } }) => ({
+const mapStateToProps = (_: any, { match: { params } }) => ({
     categoryId: params.categoryId
 })
 

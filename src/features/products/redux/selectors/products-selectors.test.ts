@@ -1,4 +1,7 @@
 import * as sut from './products-selectors';
+import { SandboxState } from '../../../../redux/state';
+
+const createProductWithId = (id: number) => ({ id, categoryId: 1, name: '', description: '' })
 
 describe('products selectors', () => {
 
@@ -7,11 +10,12 @@ describe('products selectors', () => {
             expect(sut.selectProductsListItems({
                 products: {
                     list: {
-                        items: [{ a: 1 }]
+                        isLoading: false,
+                        items: [createProductWithId(1)]
                     }
                 }
-            })
-            ).toEqual([{ a: 1 }])
+            } as SandboxState)
+            ).toEqual([createProductWithId(1)])
         })
     });
 
@@ -20,10 +24,11 @@ describe('products selectors', () => {
             expect(sut.selectProductsListIsLoading({
                 products: {
                     list: {
-                        isLoading: true
+                        isLoading: true,
+                        items: []
                     }
                 }
-            })
+            } as SandboxState)
             ).toEqual(true)
         })
     });

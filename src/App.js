@@ -4,7 +4,7 @@ import Routes from './routes';
 import Navbar from './components/navbar/navbar';
 import products from './data/products';
 import categories from './data/categories';
-import { store, history } from './redux/store';
+import { configureStore, history } from './redux/store';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import MiniAlert from './components/alert/mini-alert';
@@ -20,7 +20,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Provider store={store}>
+      <Provider store={configureStore()}>
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

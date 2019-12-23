@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './product-create-form';
 import { connect } from 'react-redux';
-import { createProduct } from './redux/actions/products-action-creators';
+import { createProductAction } from './redux/actions/products-actions';
 
 class ProductCreateComponent extends React.Component {
 
@@ -27,9 +27,9 @@ const mapStateToProps = (_, { match: { params } }) => ({
     categoryId: params.categoryId
 })
 
-const mapDispatchToProps = {
-    createProduct
-}
+const mapDispatchToProps = (dispatch) => ({
+    createProduct: (product) => dispatch(createProductAction.create(product))
+})
 
 export default connect(
     mapStateToProps,

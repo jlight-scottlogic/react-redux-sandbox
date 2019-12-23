@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loadCategory } from './redux/actions/categories-action-creators';
 import ProductList from '../products/products-list';
-import { loadProductsForCategory } from '../products/redux/actions/products-action-creators';
 import { selectProductsListItems, selectProductsListIsLoading } from '../products/redux/selectors/products-selectors';
 import productRoutes from '../products/routes/routes';
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Spinner from '../../components/spinner/spinner';
+import { loadProductsAction } from '../products/redux/actions/products-actions';
 
 class CategoryComponent extends React.Component {
 
@@ -36,7 +36,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = {
     loadCategory,
-    loadProductsForCategory
+    loadProductsForCategory: loadProductsAction.create
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryComponent);

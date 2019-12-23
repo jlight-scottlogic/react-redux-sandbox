@@ -27,9 +27,9 @@ const mapStateToProps = (_, { match: { params } }) => ({
     categoryId: params.categoryId
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    createProduct: (product) => dispatch(createProductAction.create(product))
-})
+const mapDispatchToProps = {
+    createProduct: createProductAction.create
+}
 
 export default connect(
     mapStateToProps,

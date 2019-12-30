@@ -10,7 +10,7 @@ function* createProductSaga() {
     yield takeLatest(actions.createProductAction.type, createProduct);
 }
 
-function* createProduct(action: AnyAction) {
+export function* createProduct(action: AnyAction) {
     try {
         yield call(client.post, 'products', action.payload);
 
@@ -27,7 +27,7 @@ function* loadProductsSaga() {
     yield takeLatest(actions.loadProductsAction.type, loadProducts);
 }
 
-function* loadProducts(action: AnyAction) {
+export function* loadProducts(action: AnyAction) {
     try {
         const products = yield call(client.get, `categories/${action.payload.categoryId}/products`);
 

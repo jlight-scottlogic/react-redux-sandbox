@@ -20,7 +20,7 @@ describe('create products saga', (() => {
 
         // make api call first
         expect(saga.next().value).toEqual(call(api.post, 'products', defaultProduct));
-        
+
         // dispatch success and redirect after
         expect(saga.next().value).toEqual(all([
             put(actions.createProductSuccessAction.create(defaultProduct)),
@@ -31,10 +31,28 @@ describe('create products saga', (() => {
     it('should trigger unsuccessful api call then error action', () => {
         const saga = sut.createProduct(actions.createProductAction.create(defaultProduct));
 
-        // make api call first
-        expect(saga.next().value).toEqual(call(api.post, 'products', defaultProduct));
+        saga.next();
         
-        // dispatch error alert
+        expect(saga.throw('error').value).toEqual(put(showAlertAction.create({ style: 'danger', message: 'error!' })));
+    })
+}))
+
+describe('load products saga', (() => {
+    it('should trigger successful api call then use result for success action', () => {
+        const saga = sut.loadProducts(actions.loadProductsAction.create({ categoryId: 1 }));
+
+        // make api call first
+        expect(saga.next().value).toEqual(call(api.get, `categories/1/products`));
+
+        // dispatch success
+        expect(saga.next([defaultProduct]).value).toEqual(put(actions.loadProductsSuccessAction.create([defaultProduct])));
+    })
+
+    it('should trigger unsuccessful api call then error action', () => {
+        const saga = sut.loadProducts(actions.loadProductsAction.create({ categoryId: 1 }));
+
+        saga.next();
+
         expect(saga.throw('error').value).toEqual(put(showAlertAction.create({ style: 'danger', message: 'error!' })));
     })
 }))

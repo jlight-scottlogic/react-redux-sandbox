@@ -31,9 +31,8 @@ export function* loadProducts(action: AnyAction) {
     try {
         const products = yield call(client.get, `categories/${action.payload.categoryId}/products`);
 
-        yield all([
-            put(actions.loadProductsSuccessAction.create(products))
-        ]);
+        yield put(actions.loadProductsSuccessAction.create(products));
+        
     } catch (e) {
         yield put(showAlertAction.create({ style: 'danger', message: 'error!' }));
     }

@@ -19,7 +19,15 @@ const reducer = (state: UserState = initialState, action: AnyAction): UserState 
     if (actions.userLogoutAction.matches(action)) {
         return {
             ...state,
-            loggedIn: false
+            loggedIn: false,
+            permissions: []
+        }
+    }
+
+    if (actions.loadUserPermissionsSuccessAction.matches(action)) {
+        return {
+            ...state,
+            permissions: action.payload
         }
     }
 

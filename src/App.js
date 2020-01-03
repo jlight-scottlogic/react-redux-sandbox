@@ -4,6 +4,7 @@ import Routes from './routes';
 import Navbar from './components/navbar/navbar';
 import products from './data/products';
 import categories from './data/categories';
+import permissions from './data/permissions';
 import { configureStore, history } from './redux/store';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
@@ -16,6 +17,7 @@ class App extends React.Component {
 
     localStorage.setItem('categories', JSON.stringify(categories));
     localStorage.setItem('products', JSON.stringify(products));
+    localStorage.setItem('permissions', JSON.stringify(permissions));
   }
 
   render() {

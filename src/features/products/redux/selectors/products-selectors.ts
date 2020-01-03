@@ -1,11 +1,7 @@
 import { SandboxState } from "../../../../redux/state";
-import { pipe } from '../../../../utils/functional-helpers';
+import { typedPipe } from '../../../../utils/functional-helpers';
 
 const selectProducts = (state: SandboxState) => state.products;
-
-const typedPipe = <A, B, C>(ab: (a: A) => B, bc: (b: B) => C): ((a: A) => C) => {
-    return pipe(ab, bc);
-}
 
 const selectProductsList = typedPipe(
     selectProducts,

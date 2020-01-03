@@ -18,14 +18,14 @@ class CategoryLayoutComponent extends React.Component {
         }
 
         return (
-            <div>
+            <>
                 <Navbar category={this.props.category}></Navbar>
                 <ErrorBoundary>
                     <div className="container mt-2">
                         <CategoryRoutes category={this.props.category}></CategoryRoutes>
                     </div>
                 </ErrorBoundary>
-            </div>
+            </>
         )
     }
 }

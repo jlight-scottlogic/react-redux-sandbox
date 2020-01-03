@@ -10,11 +10,11 @@ class ProductsListComponent extends React.Component<{ products: Product[] }> {
         }
 
         return (
-            <div>
+            <>
                 {
                     this.props.products.map(prod => <ProductListItem key={prod.id} product={prod} />)
                 }
-            </div>
+            </>
         )
     }
 }

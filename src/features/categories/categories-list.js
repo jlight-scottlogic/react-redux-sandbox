@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export default class CategoriesListComponent extends React.Component {
     render() {
         return (
-            <div>
+            <>
                 <div>
                     {
                         this.props.list.map(element => (
@@ -16,7 +16,7 @@ export default class CategoriesListComponent extends React.Component {
                     }
                 </div>
                 <Button as={Link} variant="primary" to={routes.create} className="mb-2 float-right">Add category</Button>
-            </div>
+            </>
         )
     }
 }

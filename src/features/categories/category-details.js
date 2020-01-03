@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Spinner from '../../components/spinner/spinner';
 import { loadProductsAction } from '../products/redux/actions/products-actions';
+import { selectUserHasPermission } from '../../security/redux/selectors/user-selectors';
+import permission from '../../security/permission';
 
 class CategoryComponent extends React.Component {
 
@@ -17,9 +19,14 @@ class CategoryComponent extends React.Component {
     }
 
     render() {
+
+        const buttonMarkup = this.props.canAddProduct
+            ? (<Button as={Link} variant="primary" to={productRoutes.create(this.props.id)} className="mb-2 float-right">Add product</Button>)
+            : null;
+
         return (
             <>
-                <Button as={Link} variant="primary" to={productRoutes.create(this.props.id)} className="mb-2 float-right">Add product</Button>
+                {buttonMarkup}
                 <div className="clearfix"></div>
                 <Spinner isLoading={this.props.isLoading} />
                 <ProductList {...this.props}></ProductList>
@@ -31,7 +38,8 @@ class CategoryComponent extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     id: ownProps.match.params.categoryId,
     products: selectProductsListItems(state),
-    isLoading: selectProductsListIsLoading(state)
+    isLoading: selectProductsListIsLoading(state),
+    canAddProduct: selectUserHasPermission(permission.product.add)(state)
 });
 
 const mapDispatchToProps = {

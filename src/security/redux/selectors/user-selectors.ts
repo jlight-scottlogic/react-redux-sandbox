@@ -7,3 +7,8 @@ export const selectUserIsLoggedIn = typedPipe(
     selectUser,
     user => user.loggedIn
 );
+
+export const selectUserHasPermission = (permission: string) => typedPipe(
+    selectUser,
+    user => user.loggedIn
+);

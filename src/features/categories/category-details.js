@@ -21,7 +21,7 @@ class CategoryComponent extends React.Component {
     render() {
         return (
             <>
-                <PermissionContainer permission={permission.category.add}>
+                <PermissionContainer permission={permission.product.add}>
                     <Button as={Link} variant="primary" to={productRoutes.create(this.props.id)} className="mb-2 float-right">Add product</Button>
                 </PermissionContainer>
                 <div className="clearfix"></div>

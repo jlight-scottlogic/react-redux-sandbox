@@ -11,7 +11,8 @@ const component = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    hasPermission: selectUserHasPermission(ownProps.permission)(state)
+    hasPermission: selectUserHasPermission(ownProps.permission)(state),
+    permission: ownProps.permission
 })
 
 export default connect(mapStateToProps, null)(component);

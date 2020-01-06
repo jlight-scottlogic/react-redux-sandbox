@@ -1,4 +1,4 @@
-import permissions from '../security/permission';
+import permissions from '../security/permissions';
 
 export default [
     permissions.category.add,

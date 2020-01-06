@@ -10,5 +10,5 @@ export const selectUserIsLoggedIn = typedPipe(
 
 export const selectUserHasPermission = (permission: string) => typedPipe(
     selectUser,
-    user => user.loggedIn
+    user => user.permissions.includes(permission)
 );

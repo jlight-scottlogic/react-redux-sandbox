@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Spinner from '../../components/spinner/spinner';
 import { loadProductsAction } from '../products/redux/actions/products-actions';
-import permission from '../../security/permission';
+import permission from '../../security/permissions';
 import PermissionContainer from '../../components/containers/permission-container';
 
 class CategoryComponent extends React.Component {

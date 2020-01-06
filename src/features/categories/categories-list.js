@@ -3,7 +3,7 @@ import CategorySquare from './categories-list-item';
 import { Button } from 'react-bootstrap';
 import routes from './routes/routes';
 import { Link } from 'react-router-dom';
-import permission from '../../security/permission';
+import permission from '../../security/permissions';
 import PermissionContainer from '../../components/containers/permission-container';
 
 class CategoriesListComponent extends React.Component {

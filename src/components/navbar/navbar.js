@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import ToggleLogin from '../../security/toggle-login'
+import BasketIcon from '../../features/basket/basket'
 
 class NavbarComponent extends React.Component {
     render() {
@@ -14,6 +15,9 @@ class NavbarComponent extends React.Component {
                     <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/categories">Categories</Nav.Link>
                         <Nav.Link as={Link} to="/other">Other</Nav.Link>
+                    </Nav>
+                    <Nav style={{ marginRight: '10px' }}>
+                        <BasketIcon />
                     </Nav>
                     <Nav>
                         <ToggleLogin />

@@ -13,7 +13,7 @@ export default class CategoryRoutesComponent extends React.Component {
         return (
             <Switch>
                 <Route exact path={categoryRoutes.details(":categoryId(\\d+)")} component={Category}></Route>
-                <Route path={categoryRoutes.edit(":categoryId(\\d+)")} component={EditCategory}></Route>
+                <ProtectedRoute path={categoryRoutes.edit(":categoryId(\\d+)")} component={EditCategory} permission={permissions.category.edit}></ProtectedRoute>
                 <ProtectedRoute path={productRoutes.create(":categoryId(\\d+)")} component={CreateProduct} permission={permissions.product.add}/>
             </Switch>
         )

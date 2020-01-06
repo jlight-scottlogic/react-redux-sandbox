@@ -3,6 +3,7 @@ export default {
         add: 'ADD_PRODUCT'
     },
     category: {
-        add: 'ADD_CATEGORY'
+        add: 'ADD_CATEGORY',
+        edit: 'EDIT_CATEGORY'
     }
 }

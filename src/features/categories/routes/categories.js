@@ -5,6 +5,7 @@ import CategoryLayout from '../category-layout';
 import CreateCategory from '../category-create';
 import routes from './routes';
 import permissions from '../../../security/permissions';
+import ProtectedRoute from '../../../security/protected-route';
 
 export default class CategoriesRoutesComponent extends React.Component {
     render() {

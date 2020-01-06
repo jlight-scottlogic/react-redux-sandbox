@@ -5,6 +5,8 @@ import EditCategory from '../category-edit';
 import CreateProduct from '../../products/product-create';
 import categoryRoutes from './routes';
 import productRoutes from '../../products/routes/routes';
+import ProtectedRoute from '../../../security/protected-route';
+import permissions from '../../../security/permissions';
 
 export default class CategoryRoutesComponent extends React.Component {
     render() {
@@ -12,7 +14,7 @@ export default class CategoryRoutesComponent extends React.Component {
             <Switch>
                 <Route exact path={categoryRoutes.details(":categoryId(\\d+)")} component={Category}></Route>
                 <Route path={categoryRoutes.edit(":categoryId(\\d+)")} component={EditCategory}></Route>
-                <Route path={productRoutes.create(":categoryId(\\d+)")} component={CreateProduct}></Route>
+                <ProtectedRoute path={productRoutes.create(":categoryId(\\d+)")} component={CreateProduct} permission={permissions.product.add}/>
             </Switch>
         )
     }

@@ -27,7 +27,8 @@ const reducer = (state: ProductsListState = initialState, action: AnyAction): Pr
         };
     }
 
-    if (actions.loadProductsAction.matches(action)) {
+    if (actions.loadProductsAction.matches(action) ||
+        actions.loadProductsByIdAction.matches(action)) {
         return {
             ...state,
             items: [],
@@ -35,7 +36,8 @@ const reducer = (state: ProductsListState = initialState, action: AnyAction): Pr
         };
     }
 
-    if (actions.loadProductsSuccessAction.matches(action)) {
+    if (actions.loadProductsSuccessAction.matches(action) ||
+        actions.loadProductsByIdSuccessAction.matches(action)) {
         return {
             ...state,
             items: action.payload,

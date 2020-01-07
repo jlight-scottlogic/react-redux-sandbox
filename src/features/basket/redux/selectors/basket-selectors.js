@@ -11,3 +11,8 @@ export const selectBasketItemsCount = pipe(
     selectBasketItems,
     items => items.map(i => i.quantity).reduce((total, val) => total + val, 0)
 )
+
+export const selectBasketItemsIds = pipe(
+    selectBasketItems,
+    items => items.map(i => i.productId)
+)

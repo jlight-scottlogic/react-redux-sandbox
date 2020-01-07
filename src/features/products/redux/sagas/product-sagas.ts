@@ -38,10 +38,26 @@ export function* loadProducts(action: AnyAction) {
     }
 }
 
+function* loadProductsByIdSaga() {
+    yield takeLatest(actions.loadProductsByIdAction.type, loadProductsById);
+}
+
+export function* loadProductsById(action: AnyAction) {
+    try {
+        const products = yield call(client.get, `products`, action.payload);
+
+        yield put(actions.loadProductsByIdSuccessAction.create(products));
+        
+    } catch (e) {
+        console.log(e);
+        yield put(showAlertAction.create({ style: 'danger', message: 'error!' }));
+    }
+}
 
 export default function* rootSaga() {
     yield all([
         createProductSaga(),
-        loadProductsSaga()
+        loadProductsSaga(),
+        loadProductsByIdSaga()
     ])
 }

@@ -33,13 +33,25 @@ export const put = async (url, item) => {
     localStorage.setItem(split[0], JSON.stringify(newSet));
 }
 
-export const get = async (url) => {
+export const get = async (url, data) => {
     await delay(500);
 
     const split = url.split('/');
 
     if (split.length === 1) {
-        return getSetFromStorage(split[0]);
+        const set = getSetFromStorage(split[0]);
+
+        if (data != null) {
+            switch (split[0]) {
+                case 'products':
+                    return set.filter(x => data.includes(x.id));
+
+                default:
+                    return set;
+            }
+        }
+
+        return set;
     }
 
     if (split.length === 2) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import BasketDisplay from './basket-display';
+import BasketDisplay from './basket-icon-display';
 
 let container;
 

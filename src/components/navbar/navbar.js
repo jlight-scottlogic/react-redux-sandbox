@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import ToggleLogin from '../../security/toggle-login'
-import BasketIcon from '../../features/basket/basket'
+import BasketIcon from '../../features/basket/basket-icon'
 
 class NavbarComponent extends React.Component {
     render() {

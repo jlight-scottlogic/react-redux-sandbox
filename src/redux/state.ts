@@ -5,6 +5,7 @@ export type SandboxState = Readonly<{
     router: any
     ui: any,
     categories: any,
+    basket: any,
     products: ProductsState,
     user: UserState
 }>

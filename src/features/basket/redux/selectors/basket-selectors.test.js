@@ -20,13 +20,25 @@ describe('basket selectors', () => {
             expect(sut.selectBasketItemsCount(state)).toEqual(0);
         })
 
-        it('should return length if items is not empty', () => {
+        it('should return quantity if items has one element', () => {
             const state = {
                 basket: {
-                    items: [{}]
+                    items: [{ productId: 0, quantity: 1 }]
                 }
             }
             expect(sut.selectBasketItemsCount(state)).toEqual(1);
+        })
+
+        it('should return sum of quantities if items has multiple elements', () => {
+            const state = {
+                basket: {
+                    items: [
+                        { productId: 0, quantity: 1 },
+                        { productId: 1, quantity: 2 }
+                    ]
+                }
+            }
+            expect(sut.selectBasketItemsCount(state)).toEqual(3);
         })
     })
 })

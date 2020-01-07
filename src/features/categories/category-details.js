@@ -10,6 +10,7 @@ import Spinner from '../../components/spinner/spinner';
 import { loadProductsAction } from '../products/redux/actions/products-actions';
 import permission from '../../security/permissions';
 import PermissionContainer from '../../components/containers/permission-container';
+import { addItemToBasketAction } from '../basket/redux/actions/basket-actions';
 
 class CategoryComponent extends React.Component {
 
@@ -26,7 +27,7 @@ class CategoryComponent extends React.Component {
                 </PermissionContainer>
                 <div className="clearfix"></div>
                 <Spinner isLoading={this.props.isLoading} />
-                <ProductList {...this.props}></ProductList>
+                <ProductList {...this.props} onProductAddClicked={this.props.addProductToBasket}></ProductList>
             </>
         )
     }
@@ -40,7 +41,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = {
     loadCategory,
-    loadProductsForCategory: loadProductsAction.create
+    loadProductsForCategory: loadProductsAction.create,
+    addProductToBasket: addItemToBasketAction.create
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryComponent);

@@ -9,5 +9,5 @@ const selectBasketItems = pipe(
 
 export const selectBasketItemsCount = pipe(
     selectBasketItems,
-    items => items.length
+    items => items.map(i => i.quantity).reduce((total, val) => total + val, 0)
 )

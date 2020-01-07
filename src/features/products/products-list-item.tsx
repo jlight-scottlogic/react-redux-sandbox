@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Product } from './redux/types/products-types';
 
-export default class ProductsListItemComponent extends React.Component<{ product: Product }> {
+export default class ProductsListItemComponent extends React.Component<{ product: Product, onAddClicked: (product: Product) => void }> {
     render() {
         return (
             <Alert variant="dark">
@@ -23,7 +23,7 @@ export default class ProductsListItemComponent extends React.Component<{ product
                         </Row>
                     </Col>
                     <Col xs={1}>
-                        <Button variant="light">+</Button>
+                        <Button variant="light" onClick={() => this.props.onAddClicked(this.props.product)}>+</Button>
                     </Col>
                 </Row>
             </Alert>

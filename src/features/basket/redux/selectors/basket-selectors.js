@@ -22,11 +22,14 @@ export const selectBasketContents = (state) => {
     const products = selectProductsListItems(state);
     const items = selectBasketItems(state);
 
-    return products.map(product => {
-        const matchingProduct = items.find(item => item.productId === product.id);
-        return {
-            product,
-            quantity: matchingProduct != null ? matchingProduct.quantity : 0
-        }
-    })
+    return items.reduce((arr, item) => {
+        const matchingProduct = products.find(product => item.productId === product.id);
+        return matchingProduct != null
+            ? [...arr,
+            {
+                product: matchingProduct,
+                quantity: item.quantity
+            }]
+            : arr;
+    }, [])
 }

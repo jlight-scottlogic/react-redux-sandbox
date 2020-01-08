@@ -10,7 +10,7 @@ const selectProductsList = typedPipe(
 
 export const selectProductsListItems = typedPipe(
     selectProductsList,
-    list => list.items
+    list => list.items ?? []
 );
 
 export const selectProductsListIsLoading = typedPipe(

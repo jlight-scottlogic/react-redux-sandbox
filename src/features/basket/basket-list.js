@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectBasketItemsIds, selectBasketContents } from './redux/selectors/basket-selectors';
 import { loadProductsByIdAction } from '../products/redux/actions/products-actions';
 import DisplayComponent from './basket-list-display';
+import { removeItemFromBasketAction } from './redux/actions/basket-actions';
 
 export default () => {
 
@@ -24,8 +25,7 @@ export default () => {
         [memoizedCallback]
     )
 
-
     return (
-        <DisplayComponent items={basket}/>
+        <DisplayComponent items={basket} onItemRemoved={(item) => dispatch(removeItemFromBasketAction.create(item.product.id))} />
     )
 }

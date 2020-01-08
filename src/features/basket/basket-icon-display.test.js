@@ -25,7 +25,7 @@ describe('BasketDisplay', () => {
             ReactDOM.render(<BasketDisplay {...props} />, container);
         });
 
-        const countDiv = container.querySelector('div');
+        const countDiv = container.querySelector('.basket-count');
 
         expect(countDiv.innerHTML).toEqual('0');
     })
@@ -39,7 +39,7 @@ describe('BasketDisplay', () => {
             ReactDOM.render(<BasketDisplay {...props} />, container);
         });
 
-        const countDiv = container.querySelector('div');
+        const countDiv = container.querySelector('.basket-count');
 
         expect(countDiv.innerHTML).toEqual('1');
     })

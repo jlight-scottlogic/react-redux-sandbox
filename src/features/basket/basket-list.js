@@ -21,11 +21,7 @@ export default () => {
         [dispatch]
     );
 
-    useEffect(() => {
-        memoizedCallback();
-    },
-        [memoizedCallback]
-    )
+    useEffect(memoizedCallback, [memoizedCallback]);
 
     return (
         <DisplayComponent
